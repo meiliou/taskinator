@@ -1,8 +1,12 @@
 // create two DOM elements by finding the item via querySelector and specific ID set in html
-var buttonEl = document.querySelector("#save-task");
+var formEl = document.querySelector("#task-form");
 var tasksToDoEl = document.querySelector("#tasks-to-do");
 
-var createTaskHandler = function() {
+var createTaskHandler = function(event) {
+// passing through the event argument into the function
+// tells the browser not to refresh the whole page.
+    event.preventDefault();
+
 // create a list item that has the look/feel and content as looked up
 // then append these details to the previously created variable
     var listItemEl = document.createElement("li");
@@ -13,7 +17,7 @@ var createTaskHandler = function() {
 }
 
 // When the button is clicked (event listener) the the following happens (event handler): 
-buttonEl.addEventListener("click", createTaskHandler);
+formEl.addEventListener("submit", createTaskHandler);
 
 
 
