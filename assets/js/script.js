@@ -16,7 +16,7 @@ var taskFormHandler = function(event) {
         alert("You need to fill out the task form!");
         return false;
     }
-
+    // reset form so don't have to manually clear last entry
     formEl.reset();
     
     // package up data as an object
@@ -27,12 +27,11 @@ var taskFormHandler = function(event) {
 
     // send it as an argument to createTaskEl
     createTaskEl(taskDataObj);
-    
 }
 
 var createTaskEl = function(taskDataObj) {
 // create a list item
-    // then append these details to the previously created variable
+// then append these details to the previously created variable
     var listItemEl = document.createElement("li");
     listItemEl.className = "task-item";
 
@@ -48,8 +47,6 @@ var createTaskEl = function(taskDataObj) {
 
     // the append entire <li> to list (parent)
     tasksToDoEl.appendChild(listItemEl);
-    console.dir(listItemEl);
-
 }
 
 
