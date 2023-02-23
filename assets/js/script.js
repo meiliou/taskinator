@@ -220,7 +220,6 @@ var dropTaskHandler = function(event) {
             statusSelectEl.selectedIndex = 2;
         }
     dropZoneEl.appendChild(draggableElement);
-
 };
 
 // When the button is clicked (event listener) the the following happens (event handler): 
