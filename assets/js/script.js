@@ -301,6 +301,7 @@ var loadTasks = function () {
     }
   
     tasks = JSON.parse(tasks);
+    
     for (var i = 0; i < tasks.length; i++) {
         tasks[i].id = taskIdCounter;
         console.log(tasks[i]);
