@@ -290,61 +290,21 @@ var saveTasks = function() {
 
 var loadTasks = function () {
     //   Gets task items from localStorage
-    tasks = localStorage.getItem("tasks");
+    var savedTasks = localStorage.getItem("tasks");
   
-    // Converts tasks from the stringified format back into an array of objects 
-    // Iterates through tasks array and creates task elements on the page from it
-  
-    if (!tasks) {
-      tasks = [];
+    if (!savedTasks) {
       return false;
     }
-  
-    tasks = JSON.parse(tasks);
+    // Converts tasks from the stringified format back into an array of objects   
+    savedTasks = JSON.parse(savedTasks);
     
-    for (var i = 0; i < tasks.length; i++) {
-        tasks[i].id = taskIdCounter;
-        console.log(tasks[i]);
-  
-        var listItemEl = document.createElement("li");  
-        listItemEl.className = "task-item";
-        listItemEl.setAttribute("data-task-id", taskIdCounter);
-        listItemEl.setAttribute("draggable", "true");
-  
-        var taskInfoEl = document.createElement("div");  
-        taskInfoEl.className = "task-info";
-        taskInfoEl.innerHTML =
-            "<h3 class='task-name'>" +
-            tasks[i].name +
-            "</h3><span class='task-type'>" +
-            tasks[i].type +
-            "</span>";
-        listItemEl.appendChild(taskInfoEl);
-  
-        var taskActionsEl = createTaskActions(taskIdCounter);
-  
-        listItemEl.appendChild(taskActionsEl);
-        // console.log(listItemEl); check it was appended properly
-      
-        var statusType = tasks[i].status;
-        var statusSelectEl = listItemEl.querySelector(
-            "select[name='status-change']"
-        );
-  
-        if (statusType === "tasks-to-do") {
-            statusSelectEl.selectedIndex = 0;
-            tasksToDoEl.appendChild(listItemEl);
-        } else if (statusType === "tasks-in-progress") {
-            statusSelectEl.selectedIndex = 1;
-            tasksInProgressEl.appendChild(listItemEl);
-        } else if (statusType === "tasks-completed") {
-            statusSelectEl.selectedIndex = 2;
-            tasksCompletedEl.appendChild(listItemEl);
-        }
-        taskIdCounter++;
-        console.log(listItemEl);
-        }
-    };
+    // Iterates through tasks array and creates task elements on the page from it
+    // loop through savedTasks array
+    for (var i = 0; i < savedTasks.length; i++) {
+        // pass each task object into the 'createTaskEl' function
+        createTaskEl(savedTasks[i]);
+    }
+};
 
 
 // When the button is clicked (event listener) the the following happens (event handler): 
